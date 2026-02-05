@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ग्राम मतदान</title>
+
+<style>
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    background:#0f172a;
+    color:white;
+}
+.app{
+    max-width:420px;
+    margin:auto;
+    padding:15px;
+    min-height:100vh;
+}
+h2{
+    text-align:center;
+}
+.card{
+    background:#020617;
+    padding:15px;
+    border-radius:15px;
+    margin-bottom:15px;
+}
+button{
+    width:100%;
+    padding:12px;
+    margin:6px 0;
+    font-size:16px;
+    border:none;
+    border-radius:10px;
+    background:#2563eb;
+    color:white;
+}
+button:disabled{
+    background:#475569;
+}
+.bar{
+    height:22px;
+    background:#1e293b;
+    border-radius:10px;
+    overflow:hidden;
+    margin-bottom:8px;
+}
+.fill{
+    height:100%;
+    background:linear-gradient(90deg,#22c55e,#4ade80);
+    width:0%;
+}
+.winner{
+    text-align:center;
+    font-size:20px;
+    color:#22c55e;
+    font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+<h2>🗳️ ग्राम मतदान</h2>
+
+<div class="card" id="voteBox"></div>
+
+<div class="card">
+<h3>📊 परिणाम</h3>
+<div id="result"></div>
+</div>
+
+<div class="winner" id="winner"></div>
+</div>
+
+<script>
+// ✅ उम्मीदवारों के नाम
+const names = [
+  "छैल सिंह देवड़ा",
+  "लक्ष्मण सिंह देवड़ा",
+  "जेताजी हरजी जी",
+  "दिनेश कुमार P",
+  "महादेव केवदजी P",
+  "नागजी जी देवासी"
+];
+
+// वोट डेटा (refresh के बाद भी रहेगा)
+let votes = JSON.parse(localStorage.getItem("votes")) 
+            || new Array(names.length).fill(0);
+
+// एक मोबाइल = एक वोट
+let voted = localStorage.getItem("voted");
+
+function vote(index){
+    if(voted) return;
+
+    votes[index]++;
+    localStorage.setItem("votes", JSON.stringify(votes));
+    localStorage.setItem("voted", "yes");
+    render();
+}
+
+function render(){
+    const voteBox = document.getElementById("voteBox");
+    const result = document.getElementById("result");
+
+    voteBox.innerHTML = "<h3>🟦 वोट दें</h3>";
+    names.forEach((name,i)=>{
+        voteBox.innerHTML += 
+        `<button onclick="vote(${i})" ${voted?"disabled":""}>${name}</button>`;
+    });
+
+    let total = votes.reduce((a,b)=>a+b,0);
+    let max = Math.max(...votes);
+    let winIndex = votes.indexOf(max);
+
+    result.innerHTML="";
+    names.forEach((name,i)=>{
+        let percent = total ? ((votes[i]/total)*100).toFixed(1) : 0;
+        result.innerHTML += `
+        ${name} - ${percent}%
+        <div class="bar">
+            <div class="fill" style="width:${percent}%"></div>
+        </div>`;
+    });
+
+    if(total > 0){
+        document.getElementById("winner").innerHTML =
+        "🏆 विजेता: " + names[winIndex];
+    }
+}
+
+render();
+</script>
+
+</body>
+</html>
