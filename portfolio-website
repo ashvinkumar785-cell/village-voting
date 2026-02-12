@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ashvin | Frontend Developer</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Arial, sans-serif;
+}
+
+body{
+  line-height:1.6;
+  background:#f4f4f4;
+}
+
+header{
+  background:#111;
+  color:#fff;
+  padding:15px 0;
+  text-align:center;
+}
+
+header h1{
+  font-size:28px;
+}
+
+nav{
+  margin-top:10px;
+}
+
+nav a{
+  color:#fff;
+  margin:0 10px;
+  text-decoration:none;
+  font-size:14px;
+}
+
+section{
+  padding:60px 20px;
+  text-align:center;
+}
+
+.hero{
+  background:linear-gradient(135deg,#007bff,#00c6ff);
+  color:white;
+  padding:80px 20px;
+}
+
+.hero h2{
+  font-size:32px;
+  margin-bottom:10px;
+}
+
+.btn{
+  display:inline-block;
+  padding:10px 20px;
+  background:#fff;
+  color:#007bff;
+  text-decoration:none;
+  margin-top:15px;
+  border-radius:5px;
+  font-weight:bold;
+}
+
+.skills span{
+  display:inline-block;
+  background:#007bff;
+  color:#fff;
+  padding:8px 15px;
+  margin:5px;
+  border-radius:20px;
+  font-size:14px;
+}
+
+.project-box{
+  background:#fff;
+  margin:15px auto;
+  padding:20px;
+  max-width:300px;
+  border-radius:10px;
+  box-shadow:0 5px 10px rgba(0,0,0,0.1);
+}
+
+footer{
+  background:#111;
+  color:#fff;
+  padding:20px;
+  text-align:center;
+}
+
+@media(max-width:600px){
+  .hero h2{
+    font-size:24px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Ashvin Kumar</h1>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h2>Frontend Developer</h2>
+  <p>I build modern and responsive websites.</p>
+  <a href="#contact" class="btn">Hire Me</a>
+</section>
+
+<section id="about">
+  <h2>About Me</h2>
+  <p>I am a passionate frontend developer skilled in HTML, CSS and JavaScript. I create clean and user-friendly websites.</p>
+</section>
+
+<section id="skills" class="skills">
+  <h2>My Skills</h2>
+  <span>HTML5</span>
+  <span>CSS3</span>
+  <span>JavaScript</span>
+  <span>Responsive Design</span>
+</section>
+
+<section id="projects">
+  <h2>My Projects</h2>
+  <div class="project-box">
+    <h3>Landing Page</h3>
+    <p>Modern responsive landing page design.</p>
+  </div>
+  <div class="project-box">
+    <h3>Login Form</h3>
+    <p>Responsive login & signup form with validation.</p>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact Me</h2>
+  <p>Email: <a href="mailto:ashvinkumar785@gmail.com">ashvinkumar785@gmail.com</a></p>
+</section>
+
+<footer>
+  <p>© 2026 Ashvin Kumar | Frontend Developer</p>
+</footer>
+
+</body>
+</html>
